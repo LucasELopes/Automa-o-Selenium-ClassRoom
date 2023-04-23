@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Driver {
+    
     public static WebDriver driver;
     public static WebDriverWait wait; 
 
