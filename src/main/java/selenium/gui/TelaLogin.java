@@ -25,6 +25,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+import selenium.ClassRoom;
+
 public class TelaLogin extends JFrame implements ActionListener{
 
     private JTextField inputEmail;
@@ -201,17 +203,30 @@ public class TelaLogin extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == submit) {
+            String password = new String(new String(inputPassword.getPassword()));
+
             if(inputEmail.getText().equals("Usuário") || inputEmail.getText().equals("")) {
                 JOptionPane.showMessageDialog(this, "Usuário inválido", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 inputEmail.setText("Usuário");
                 
             }
-            else if(new String(inputPassword.getPassword()).equals("password") || new String(inputPassword.getPassword()).equals("")) {
+            else if(password.equals("password") || password.equals("")) {
                 JOptionPane.showMessageDialog(this, "Senha inválida", "Aviso", JOptionPane.INFORMATION_MESSAGE);
                 inputPassword.setText("password");
             }
-            else if(inputEmail.getText().indexOf("@edu.ufes.br") == -1) {
-                inputEmail.setText(inputEmail.getText() + "@edu.ufes.br");
+            else { 
+                if(inputEmail.getText().indexOf("@edu.ufes.br") == -1) {
+                    inputEmail.setText(inputEmail.getText() + "@edu.ufes.br");
+                }
+                try {
+                    new ClassRoom(inputEmail.getText(), password);
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(this, e1.getMessage(), "Login recusado", JOptionPane.ERROR_MESSAGE);
+                    inputEmail.setText("Usuário");
+                    inputPassword.setText("password");
+                    System.out.println(e1.getMessage());
+                    new ClassRoom().quitDriver();
+                }
             }
         }
     }
