@@ -25,6 +25,7 @@ public class ClassRoom extends Driver {
         if(driver.findElements(By.cssSelector("div.rFrNMe.N3Hzgf.jjwyfe.QBQrY.zKHdkd.sdJrJc.Tyc9J.CDELXb.k0tWj.IYewr")).size() == 1) {
             throw new Exception("Email inválido!");            
         }
+
         //inserindo usuário -------------- precisa de uma classe responsável por dar o usuário já pronto FRONT é seu serviço
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"username\"]"))).sendKeys("lucas.e.tavares");
 
