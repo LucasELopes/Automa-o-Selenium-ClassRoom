@@ -15,6 +15,8 @@ public class ClassRoom extends Driver {
     public ClassRoom(String email, String password) throws Exception {
         super(false);
 
+        int indexAroba = email.indexOf("@");
+
         driver.get("https://accounts.google.com/ServiceLogin?continue=https%3A%2F%2Fclassroom.google.com&passive=true");
 
         //inserindo o email institucional.
@@ -26,8 +28,7 @@ public class ClassRoom extends Driver {
             throw new Exception("Email inválido!");            
         }
 
-        //inserindo usuário -------------- precisa de uma classe responsável por dar o usuário já pronto FRONT é seu serviço
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"username\"]"))).sendKeys("lucas.e.tavares");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"username\"]"))).sendKeys(email.substring(0, indexAroba));
 
         // inserindo senha
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"password\"]"))).sendKeys(password, Keys.ENTER);
