@@ -25,7 +25,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-import selenium.ClassRoom;
+import selenium.Login;
+import selenium.driver.Driver;
 
 public class TelaLogin extends JFrame implements ActionListener{
 
@@ -219,13 +220,13 @@ public class TelaLogin extends JFrame implements ActionListener{
                     inputEmail.setText(inputEmail.getText() + "@edu.ufes.br");
                 }
                 try {
-                    new ClassRoom(inputEmail.getText(), password);
+                    new Login(inputEmail.getText(), password);
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(this, e1.getMessage(), "Login recusado", JOptionPane.ERROR_MESSAGE);
                     inputEmail.setText("Usuário");
                     inputPassword.setText("password");
                     System.out.println(e1.getMessage());
-                    new ClassRoom().quitDriver();
+                    new Driver().quit();
                 }
             }
         }
