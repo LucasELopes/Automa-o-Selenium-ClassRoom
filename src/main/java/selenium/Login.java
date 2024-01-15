@@ -28,7 +28,6 @@ public class Login extends Driver {
             throw new Exception("Email inválido!");            
         }
 
-        //inserindo usuário -------------- precisa de uma classe responsável por dar o usuário já pronto FRONT é seu serviço
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"username\"]"))).sendKeys(email.substring(0, indexAroba));
 
         // inserindo senha

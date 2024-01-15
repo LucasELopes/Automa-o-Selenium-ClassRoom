@@ -36,19 +36,19 @@ public class TelaLogin extends JFrame implements ActionListener{
     private JButton submit;
 
     public TelaLogin() {
-        setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(400, 435);
         setLayout(null);
-        setIconImage(new ImageIcon("src/main/java/selenium/gui/img/logotipo/logo.png").getImage());
+        setIconImage(new ImageIcon("src/main/java/selenium/gui/img/login/logo.png").getImage());
         setTitle("Login");
         setFocusable(true);
 
         header();
         inputEmailPassword();
         submit();
-
+        
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
